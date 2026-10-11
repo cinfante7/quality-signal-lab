@@ -130,4 +130,5 @@ Fifteen tests cover both releases, including split isolation, frozen coefficient
 mandatory flags, capacity gates, deterministic bytes, metric arithmetic and
 specification-to-test traceability. See verification-v2.json and test-results-v2.txt.
 The first report, first verification record and first release ZIP remain intact.
-Publication is pending a verified new private target; see PUBLICATION.md.
+Private publication targets only this new repository; public sharing remains
+unapproved. See PUBLICATION.md.
