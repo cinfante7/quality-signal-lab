@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quality Signal Lab | Evaluation</title><style>
+body{font:16px/1.6 system-ui,sans-serif;margin:0;background:#eef2f5;color:#162b38}
+main{max-width:1000px;margin:auto;padding:40px 24px}h1{font-size:42px;margin:8px 0}
+.tag{color:#23675e;font-weight:700}.cards{display:flex;gap:20px;flex-wrap:wrap}
+section{background:white;padding:24px;flex:1;min-width:250px;border-top:4px solid #23675e}
+table{border-collapse:collapse;width:100%}th,td{padding:10px;border:1px solid #cbd5db;text-align:center}
+pre{white-space:pre-wrap;background:white;padding:24px;font:14px/1.7 ui-monospace,monospace}
+a{color:#155d78}@media print{body{background:white}main{padding:0}}
+</style><main><div class="tag">ENGINEERING + APPLIED ML • OCTOBER 2026</div>
+<h1>Quality Signal Lab</h1><p>Synthetic inspection · batch holdout · traceable failure review</p>
+<p><strong>Portfolio demonstration:</strong> AI-assisted, newly created. Synthetic results do not establish real manufacturing performance.</p>
+<div class="cards"><section><h2>baseline</h2>
+<p>Recall 44.3% · Precision 56.1% · Cost 742</p>
+<table><caption>Actual rows / predicted columns</caption><tr><th></th><th>Acceptable</th><th>Defect</th></tr>
+<tr><th>Acceptable</th><td>281</td><td>82</td></tr>
+<tr><th>Defect</th><td>132</td><td>105</td></tr></table></section><section><h2>logistic</h2>
+<p>Recall 95.8% · Precision 43.7% · Cost 342</p>
+<table><caption>Actual rows / predicted columns</caption><tr><th></th><th>Acceptable</th><th>Defect</th></tr>
+<tr><th>Acceptable</th><td>71</td><td>292</td></tr>
+<tr><th>Defect</th><td>10</td><td>227</td></tr></table></section></div><p><a href="failure_review.csv">All errors (CSV)</a> ·
+<a href="test_predictions.csv">Held-out predictions</a> · <a href="metrics.json">Metrics and threshold sweep</a></p>
+<pre># Quality Signal Lab — evaluation and failure review
+
+New AI-assisted portfolio demonstration for Christopher Infante, created October 2026.
+Synthetic data only; no real manufacturing performance claim.
+
+## Frozen experiment
+Seed 20261011; 2,400 samples across 12 ordered batches. Train: batches 1–7 (1,400);
+validation: 8–9 (400); final test: 10–12 (600). Scaling and model weights fit on
+training only. A 19-point threshold grid is selected only on validation, minimizing
+5 × missed defects + false alarms; ties prefer the larger threshold. Selected: 0.20.
+Model settings and engineering transforms were fixed before inspecting test results.
+
+## Held-out results
+Defects in test: 237 / 600 (39.5%).
+
+| Method | TN | FP | FN | TP | Precision | Recall | Cost (5 FN + FP) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| baseline | 281 | 82 | 132 | 105 | 0.561 | 0.443 | 742 |
+| logistic | 71 | 292 | 10 | 227 | 0.437 | 0.958 | 342 |
+
+Confusion counts use actual defect as the positive class. Cost is an illustrative
+relative penalty, not dollars or a verified business loss. Accuracy alone is not
+the decision criterion. The rule flags 31.2% of items;
+ML flags 86.5%. At the same assumed costs, flagging every
+item would cost 363, while accepting every item would cost 1185.
+ML&#x27;s small improvement over flagging everything underscores the review burden.
+With these frozen predictions, equal FN/FP costs favor the rule
+(214 errors versus 302); 5:1 costs favor ML.
+This is post-evaluation sensitivity analysis, not retuning.
+
+## Failure review
+The fixed rule misses 132 defects and flags 82 acceptable samples.
+The logistic model misses 10 defects and flags 292 acceptable samples.
+The test cost difference (ML minus rule) is -400.
+Every error, its measurements, batch, label and probability is in failure_review.csv;
+all 600 samples are in test_predictions.csv. Per-batch counts are in metrics.json.
+First two cases by sample order in each error category (no cherry-picking):
+
+| Model | Error | Sample | Diameter mm | Surface | Vibration mm/s | ML probability |
+|---|---|---|---:|---:|---:|---:|
+| baseline | missed defect | B10-000 | 10.14487 | 0.32725 | 2.03300 | 0.383 |
+| baseline | missed defect | B10-002 | 10.16334 | 0.27959 | 1.72022 | 0.334 |
+| baseline | false alarm | B10-001 | 10.20447 | 0.45078 | 2.17832 | 0.573 |
+| baseline | false alarm | B10-006 | 10.23551 | 0.32906 | 1.66835 | 0.460 |
+| logistic | missed defect | B10-074 | 9.98413 | 0.18203 | 1.76484 | 0.141 |
+| logistic | missed defect | B10-085 | 9.93709 | 0.02861 | 1.42503 | 0.107 |
+| logistic | false alarm | B10-001 | 10.20447 | 0.45078 | 2.17832 | 0.573 |
+| logistic | false alarm | B10-003 | 10.04722 | 0.46712 | 1.48502 | 0.251 |
+
+The rule can miss moderate combined signals because each individual measurement
+remains under its threshold. A low model threshold can catch those signals while
+also producing many false alarms. Neither predictor can recover the unobserved
+random component of the synthetic label. These are hypotheses from the generating
+mechanism, not verified root causes in a factory. Review cases against process
+history, measurement-system repeatability and independent adjudicated labels before
+taking action. In production, hold suspected items for human inspection rather
+than allowing automatic release.
+
+## Decision and next experiment
+Compare the actual counts and the assumed 5:1 tradeoff before choosing a policy.
+Do not adopt ML solely because its assumed cost is lower. Quantify real false-alarm
+capacity and escape severity; repeat on independent lots, assess measurement error,
+and test threshold sensitivity. The validation sweep is included for inspection.
+No repeated test-driven model tuning was performed.
+
+## Limits
+One seeded synthetic world, noisy invented labels, simple gradual drift, and three
+scalar measurements. This is not a machine-vision system or a validated inspection
+instrument. No image defects, gauge R&amp;R, real acceptance specification, correlated
+lot failures, or real class prevalence are established. The same broad risk formula
+defines every batch; this makes generalization easier than unseen factory failure
+modes. The label mechanism resembles the selected model; model advantage may
+reflect that assumption. Batch-level rates should be reviewed even when aggregate
+metrics look favorable. No confidence interval or manufacturing certification is claimed.
+
+## Reproducibility
+Data SHA-256: c59087c8288a5062bfa612cfac94643d706e8f6a5ca461e45bdf09bfba35a7cd
+Python: 3.13.7; no third-party packages.
+</pre></main></html>

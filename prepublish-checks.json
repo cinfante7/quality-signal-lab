@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "files_scanned": 42,
+  "archive_text_members_scanned": 53,
+  "findings_without_values": [],
+  "html_checks": [
+    {
+      "file": "artifacts/report.html",
+      "passed": true,
+      "language": true,
+      "responsive_viewport": true,
+      "h1_count": 1,
+      "local_references_checked": [
+        "failure_review.csv",
+        "test_predictions.csv",
+        "metrics.json"
+      ],
+      "errors": [],
+      "visual_browser_qa": "unverified"
+    },
+    {
+      "file": "refinement/report.html",
+      "passed": true,
+      "language": true,
+      "responsive_viewport": true,
+      "h1_count": 1,
+      "local_references_checked": [
+        "error_pareto.svg",
+        "metrics.json",
+        "failure_review.csv",
+        "variation.csv"
+      ],
+      "errors": [],
+      "visual_browser_qa": "unverified"
+    }
+  ],
+  "limitations": "Heuristic scan, not a guarantee. Only authorized name Christopher Infante and GitHub account cinfante7 are intended personal identifiers. No browser rendering reviewed."
+}

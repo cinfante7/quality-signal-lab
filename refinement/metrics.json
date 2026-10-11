@@ -1,0 +1,1388 @@
+{
+  "revision": 2,
+  "disclosure": "Policy refinement after original test inspection; no retraining",
+  "seed": 20261011,
+  "original_artifact_sha256": {
+    "artifacts\\failure_review.csv": "e71b6af4c86cec09b026310c920913bcead269c246f2d1284875b0d8627a3460",
+    "artifacts\\metrics.json": "799866b3674fec31ebfa3c32f8598a2e9c5a1d54775373d15dba87fc1de4e8e4",
+    "artifacts\\report.html": "3297ada45a118a84665bf5f40c8c226c89d0dd269f2124de4ac5f4907e5ac8d6",
+    "artifacts\\report.md": "0c25cfd3f9c041e8b0a1d4f04722f79a6c8652baf1e7f9ccdfbc33229317e0d4",
+    "artifacts\\synthetic_inspections.csv": "c59087c8288a5062bfa612cfac94643d706e8f6a5ca461e45bdf09bfba35a7cd",
+    "artifacts\\test_predictions.csv": "7f5a1a95a6739cddb01e84d2be7116352a5b394ed98adba891c65decb03b6b48"
+  },
+  "data_checks": {
+    "rows": 3000,
+    "unique_ids": 3000,
+    "finite": true,
+    "schema": [
+      "sample_id",
+      "batch",
+      "diameter_mm",
+      "surface_score",
+      "vibration_mm_s",
+      "defect"
+    ]
+  },
+  "split": {
+    "train": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "validation_exploratory": [
+      8,
+      9
+    ],
+    "original_inspected_holdout": [
+      10,
+      11,
+      12
+    ],
+    "new_holdout": [
+      13,
+      14,
+      15
+    ]
+  },
+  "model_frozen": {
+    "means": [
+      0.09765874285714284,
+      0.34339605,
+      1.6246852357142858
+    ],
+    "scales": [
+      0.07330921437497971,
+      0.15485298462241187,
+      0.4424218965558636
+    ],
+    "weights": [
+      -0.9971385817962769,
+      0.44925832856402326,
+      0.3849499887296399,
+      0.2940402915497802
+    ],
+    "epochs": 700,
+    "learning_rate": 0.1,
+    "l2_penalty": 0.01
+  },
+  "capacity": 0.4,
+  "min_recall": 0.8,
+  "hybrid_threshold": 0.4,
+  "capacity_feasible": true,
+  "validation_candidate": {
+    "threshold": 0.4,
+    "aggregate": {
+      "tn": 213,
+      "fp": 67,
+      "fn": 57,
+      "tp": 63,
+      "n": 400,
+      "precision": 0.4846153846153846,
+      "recall": 0.525,
+      "accuracy": 0.69,
+      "cost": 352,
+      "defect_rate": 0.3,
+      "flag_rate": 0.325,
+      "capacity_ok": true,
+      "recall_ok": false
+    },
+    "by_batch": {
+      "8": {
+        "tn": 114,
+        "fp": 29,
+        "fn": 33,
+        "tp": 24,
+        "n": 200,
+        "precision": 0.4528301886792453,
+        "recall": 0.42105263157894735,
+        "accuracy": 0.69,
+        "cost": 194,
+        "defect_rate": 0.285,
+        "flag_rate": 0.265,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "9": {
+        "tn": 99,
+        "fp": 38,
+        "fn": 24,
+        "tp": 39,
+        "n": 200,
+        "precision": 0.5064935064935064,
+        "recall": 0.6190476190476191,
+        "accuracy": 0.69,
+        "cost": 158,
+        "defect_rate": 0.315,
+        "flag_rate": 0.385,
+        "capacity_ok": true,
+        "recall_ok": false
+      }
+    },
+    "requirements_pass": false
+  },
+  "validation_baseline": {
+    "aggregate": {
+      "tn": 243,
+      "fp": 37,
+      "fn": 74,
+      "tp": 46,
+      "n": 400,
+      "precision": 0.5542168674698795,
+      "recall": 0.38333333333333336,
+      "accuracy": 0.7225,
+      "cost": 407,
+      "defect_rate": 0.3,
+      "flag_rate": 0.2075,
+      "capacity_ok": true,
+      "recall_ok": false
+    },
+    "by_batch": {
+      "8": {
+        "tn": 126,
+        "fp": 17,
+        "fn": 41,
+        "tp": 16,
+        "n": 200,
+        "precision": 0.48484848484848486,
+        "recall": 0.2807017543859649,
+        "accuracy": 0.71,
+        "cost": 222,
+        "defect_rate": 0.285,
+        "flag_rate": 0.165,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "9": {
+        "tn": 117,
+        "fp": 20,
+        "fn": 33,
+        "tp": 30,
+        "n": 200,
+        "precision": 0.6,
+        "recall": 0.47619047619047616,
+        "accuracy": 0.735,
+        "cost": 185,
+        "defect_rate": 0.315,
+        "flag_rate": 0.25,
+        "capacity_ok": true,
+        "recall_ok": false
+      }
+    },
+    "requirements_pass": false
+  },
+  "validation_sweep": [
+    {
+      "threshold": 0.05,
+      "aggregate": {
+        "tn": 0,
+        "fp": 280,
+        "fn": 0,
+        "tp": 120,
+        "n": 400,
+        "precision": 0.3,
+        "recall": 1.0,
+        "accuracy": 0.3,
+        "cost": 280,
+        "defect_rate": 0.3,
+        "flag_rate": 1.0,
+        "capacity_ok": false,
+        "recall_ok": true
+      },
+      "by_batch": {
+        "8": {
+          "tn": 0,
+          "fp": 143,
+          "fn": 0,
+          "tp": 57,
+          "n": 200,
+          "precision": 0.285,
+          "recall": 1.0,
+          "accuracy": 0.285,
+          "cost": 143,
+          "defect_rate": 0.285,
+          "flag_rate": 1.0,
+          "capacity_ok": false,
+          "recall_ok": true
+        },
+        "9": {
+          "tn": 0,
+          "fp": 137,
+          "fn": 0,
+          "tp": 63,
+          "n": 200,
+          "precision": 0.315,
+          "recall": 1.0,
+          "accuracy": 0.315,
+          "cost": 137,
+          "defect_rate": 0.315,
+          "flag_rate": 1.0,
+          "capacity_ok": false,
+          "recall_ok": true
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.1,
+      "aggregate": {
+        "tn": 3,
+        "fp": 277,
+        "fn": 1,
+        "tp": 119,
+        "n": 400,
+        "precision": 0.3005050505050505,
+        "recall": 0.9916666666666667,
+        "accuracy": 0.305,
+        "cost": 282,
+        "defect_rate": 0.3,
+        "flag_rate": 0.99,
+        "capacity_ok": false,
+        "recall_ok": true
+      },
+      "by_batch": {
+        "8": {
+          "tn": 1,
+          "fp": 142,
+          "fn": 0,
+          "tp": 57,
+          "n": 200,
+          "precision": 0.2864321608040201,
+          "recall": 1.0,
+          "accuracy": 0.29,
+          "cost": 142,
+          "defect_rate": 0.285,
+          "flag_rate": 0.995,
+          "capacity_ok": false,
+          "recall_ok": true
+        },
+        "9": {
+          "tn": 2,
+          "fp": 135,
+          "fn": 1,
+          "tp": 62,
+          "n": 200,
+          "precision": 0.3147208121827411,
+          "recall": 0.9841269841269841,
+          "accuracy": 0.32,
+          "cost": 140,
+          "defect_rate": 0.315,
+          "flag_rate": 0.985,
+          "capacity_ok": false,
+          "recall_ok": true
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.15,
+      "aggregate": {
+        "tn": 25,
+        "fp": 255,
+        "fn": 6,
+        "tp": 114,
+        "n": 400,
+        "precision": 0.3089430894308943,
+        "recall": 0.95,
+        "accuracy": 0.3475,
+        "cost": 285,
+        "defect_rate": 0.3,
+        "flag_rate": 0.9225,
+        "capacity_ok": false,
+        "recall_ok": true
+      },
+      "by_batch": {
+        "8": {
+          "tn": 9,
+          "fp": 134,
+          "fn": 4,
+          "tp": 53,
+          "n": 200,
+          "precision": 0.28342245989304815,
+          "recall": 0.9298245614035088,
+          "accuracy": 0.31,
+          "cost": 154,
+          "defect_rate": 0.285,
+          "flag_rate": 0.935,
+          "capacity_ok": false,
+          "recall_ok": true
+        },
+        "9": {
+          "tn": 16,
+          "fp": 121,
+          "fn": 2,
+          "tp": 61,
+          "n": 200,
+          "precision": 0.33516483516483514,
+          "recall": 0.9682539682539683,
+          "accuracy": 0.385,
+          "cost": 131,
+          "defect_rate": 0.315,
+          "flag_rate": 0.91,
+          "capacity_ok": false,
+          "recall_ok": true
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.2,
+      "aggregate": {
+        "tn": 75,
+        "fp": 205,
+        "fn": 13,
+        "tp": 107,
+        "n": 400,
+        "precision": 0.34294871794871795,
+        "recall": 0.8916666666666667,
+        "accuracy": 0.455,
+        "cost": 270,
+        "defect_rate": 0.3,
+        "flag_rate": 0.78,
+        "capacity_ok": false,
+        "recall_ok": true
+      },
+      "by_batch": {
+        "8": {
+          "tn": 37,
+          "fp": 106,
+          "fn": 7,
+          "tp": 50,
+          "n": 200,
+          "precision": 0.32051282051282054,
+          "recall": 0.8771929824561403,
+          "accuracy": 0.435,
+          "cost": 141,
+          "defect_rate": 0.285,
+          "flag_rate": 0.78,
+          "capacity_ok": false,
+          "recall_ok": true
+        },
+        "9": {
+          "tn": 38,
+          "fp": 99,
+          "fn": 6,
+          "tp": 57,
+          "n": 200,
+          "precision": 0.36538461538461536,
+          "recall": 0.9047619047619048,
+          "accuracy": 0.475,
+          "cost": 129,
+          "defect_rate": 0.315,
+          "flag_rate": 0.78,
+          "capacity_ok": false,
+          "recall_ok": true
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.25,
+      "aggregate": {
+        "tn": 120,
+        "fp": 160,
+        "fn": 25,
+        "tp": 95,
+        "n": 400,
+        "precision": 0.37254901960784315,
+        "recall": 0.7916666666666666,
+        "accuracy": 0.5375,
+        "cost": 285,
+        "defect_rate": 0.3,
+        "flag_rate": 0.6375,
+        "capacity_ok": false,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 59,
+          "fp": 84,
+          "fn": 16,
+          "tp": 41,
+          "n": 200,
+          "precision": 0.328,
+          "recall": 0.7192982456140351,
+          "accuracy": 0.5,
+          "cost": 164,
+          "defect_rate": 0.285,
+          "flag_rate": 0.625,
+          "capacity_ok": false,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 61,
+          "fp": 76,
+          "fn": 9,
+          "tp": 54,
+          "n": 200,
+          "precision": 0.4153846153846154,
+          "recall": 0.8571428571428571,
+          "accuracy": 0.575,
+          "cost": 121,
+          "defect_rate": 0.315,
+          "flag_rate": 0.65,
+          "capacity_ok": false,
+          "recall_ok": true
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.3,
+      "aggregate": {
+        "tn": 156,
+        "fp": 124,
+        "fn": 38,
+        "tp": 82,
+        "n": 400,
+        "precision": 0.39805825242718446,
+        "recall": 0.6833333333333333,
+        "accuracy": 0.595,
+        "cost": 314,
+        "defect_rate": 0.3,
+        "flag_rate": 0.515,
+        "capacity_ok": false,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 75,
+          "fp": 68,
+          "fn": 24,
+          "tp": 33,
+          "n": 200,
+          "precision": 0.32673267326732675,
+          "recall": 0.5789473684210527,
+          "accuracy": 0.54,
+          "cost": 188,
+          "defect_rate": 0.285,
+          "flag_rate": 0.505,
+          "capacity_ok": false,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 81,
+          "fp": 56,
+          "fn": 14,
+          "tp": 49,
+          "n": 200,
+          "precision": 0.4666666666666667,
+          "recall": 0.7777777777777778,
+          "accuracy": 0.65,
+          "cost": 126,
+          "defect_rate": 0.315,
+          "flag_rate": 0.525,
+          "capacity_ok": false,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.35,
+      "aggregate": {
+        "tn": 190,
+        "fp": 90,
+        "fn": 44,
+        "tp": 76,
+        "n": 400,
+        "precision": 0.4578313253012048,
+        "recall": 0.6333333333333333,
+        "accuracy": 0.665,
+        "cost": 310,
+        "defect_rate": 0.3,
+        "flag_rate": 0.415,
+        "capacity_ok": false,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 99,
+          "fp": 44,
+          "fn": 27,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.40540540540540543,
+          "recall": 0.5263157894736842,
+          "accuracy": 0.645,
+          "cost": 179,
+          "defect_rate": 0.285,
+          "flag_rate": 0.37,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 91,
+          "fp": 46,
+          "fn": 17,
+          "tp": 46,
+          "n": 200,
+          "precision": 0.5,
+          "recall": 0.7301587301587301,
+          "accuracy": 0.685,
+          "cost": 131,
+          "defect_rate": 0.315,
+          "flag_rate": 0.46,
+          "capacity_ok": false,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.4,
+      "aggregate": {
+        "tn": 213,
+        "fp": 67,
+        "fn": 57,
+        "tp": 63,
+        "n": 400,
+        "precision": 0.4846153846153846,
+        "recall": 0.525,
+        "accuracy": 0.69,
+        "cost": 352,
+        "defect_rate": 0.3,
+        "flag_rate": 0.325,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 114,
+          "fp": 29,
+          "fn": 33,
+          "tp": 24,
+          "n": 200,
+          "precision": 0.4528301886792453,
+          "recall": 0.42105263157894735,
+          "accuracy": 0.69,
+          "cost": 194,
+          "defect_rate": 0.285,
+          "flag_rate": 0.265,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 99,
+          "fp": 38,
+          "fn": 24,
+          "tp": 39,
+          "n": 200,
+          "precision": 0.5064935064935064,
+          "recall": 0.6190476190476191,
+          "accuracy": 0.69,
+          "cost": 158,
+          "defect_rate": 0.315,
+          "flag_rate": 0.385,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.45,
+      "aggregate": {
+        "tn": 231,
+        "fp": 49,
+        "fn": 64,
+        "tp": 56,
+        "n": 400,
+        "precision": 0.5333333333333333,
+        "recall": 0.4666666666666667,
+        "accuracy": 0.7175,
+        "cost": 369,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2625,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 120,
+          "fp": 23,
+          "fn": 36,
+          "tp": 21,
+          "n": 200,
+          "precision": 0.4772727272727273,
+          "recall": 0.3684210526315789,
+          "accuracy": 0.705,
+          "cost": 203,
+          "defect_rate": 0.285,
+          "flag_rate": 0.22,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 111,
+          "fp": 26,
+          "fn": 28,
+          "tp": 35,
+          "n": 200,
+          "precision": 0.5737704918032787,
+          "recall": 0.5555555555555556,
+          "accuracy": 0.73,
+          "cost": 166,
+          "defect_rate": 0.315,
+          "flag_rate": 0.305,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.5,
+      "aggregate": {
+        "tn": 238,
+        "fp": 42,
+        "fn": 71,
+        "tp": 49,
+        "n": 400,
+        "precision": 0.5384615384615384,
+        "recall": 0.4083333333333333,
+        "accuracy": 0.7175,
+        "cost": 397,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2275,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 123,
+          "fp": 20,
+          "fn": 39,
+          "tp": 18,
+          "n": 200,
+          "precision": 0.47368421052631576,
+          "recall": 0.3157894736842105,
+          "accuracy": 0.705,
+          "cost": 215,
+          "defect_rate": 0.285,
+          "flag_rate": 0.19,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 115,
+          "fp": 22,
+          "fn": 32,
+          "tp": 31,
+          "n": 200,
+          "precision": 0.5849056603773585,
+          "recall": 0.49206349206349204,
+          "accuracy": 0.73,
+          "cost": 182,
+          "defect_rate": 0.315,
+          "flag_rate": 0.265,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.55,
+      "aggregate": {
+        "tn": 241,
+        "fp": 39,
+        "fn": 71,
+        "tp": 49,
+        "n": 400,
+        "precision": 0.5568181818181818,
+        "recall": 0.4083333333333333,
+        "accuracy": 0.725,
+        "cost": 394,
+        "defect_rate": 0.3,
+        "flag_rate": 0.22,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 125,
+          "fp": 18,
+          "fn": 39,
+          "tp": 18,
+          "n": 200,
+          "precision": 0.5,
+          "recall": 0.3157894736842105,
+          "accuracy": 0.715,
+          "cost": 213,
+          "defect_rate": 0.285,
+          "flag_rate": 0.18,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 116,
+          "fp": 21,
+          "fn": 32,
+          "tp": 31,
+          "n": 200,
+          "precision": 0.5961538461538461,
+          "recall": 0.49206349206349204,
+          "accuracy": 0.735,
+          "cost": 181,
+          "defect_rate": 0.315,
+          "flag_rate": 0.26,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.6,
+      "aggregate": {
+        "tn": 242,
+        "fp": 38,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5476190476190477,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.72,
+        "cost": 408,
+        "defect_rate": 0.3,
+        "flag_rate": 0.21,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 116,
+          "fp": 21,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.5882352941176471,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.73,
+          "cost": 186,
+          "defect_rate": 0.315,
+          "flag_rate": 0.255,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.65,
+      "aggregate": {
+        "tn": 243,
+        "fp": 37,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5542168674698795,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.7225,
+        "cost": 407,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2075,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 117,
+          "fp": 20,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.735,
+          "cost": 185,
+          "defect_rate": 0.315,
+          "flag_rate": 0.25,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.7,
+      "aggregate": {
+        "tn": 243,
+        "fp": 37,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5542168674698795,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.7225,
+        "cost": 407,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2075,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 117,
+          "fp": 20,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.735,
+          "cost": 185,
+          "defect_rate": 0.315,
+          "flag_rate": 0.25,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.75,
+      "aggregate": {
+        "tn": 243,
+        "fp": 37,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5542168674698795,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.7225,
+        "cost": 407,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2075,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 117,
+          "fp": 20,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.735,
+          "cost": 185,
+          "defect_rate": 0.315,
+          "flag_rate": 0.25,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.8,
+      "aggregate": {
+        "tn": 243,
+        "fp": 37,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5542168674698795,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.7225,
+        "cost": 407,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2075,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 117,
+          "fp": 20,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.735,
+          "cost": 185,
+          "defect_rate": 0.315,
+          "flag_rate": 0.25,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.85,
+      "aggregate": {
+        "tn": 243,
+        "fp": 37,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5542168674698795,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.7225,
+        "cost": 407,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2075,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 117,
+          "fp": 20,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.735,
+          "cost": 185,
+          "defect_rate": 0.315,
+          "flag_rate": 0.25,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.9,
+      "aggregate": {
+        "tn": 243,
+        "fp": 37,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5542168674698795,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.7225,
+        "cost": 407,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2075,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 117,
+          "fp": 20,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.735,
+          "cost": 185,
+          "defect_rate": 0.315,
+          "flag_rate": 0.25,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    {
+      "threshold": 0.95,
+      "aggregate": {
+        "tn": 243,
+        "fp": 37,
+        "fn": 74,
+        "tp": 46,
+        "n": 400,
+        "precision": 0.5542168674698795,
+        "recall": 0.38333333333333336,
+        "accuracy": 0.7225,
+        "cost": 407,
+        "defect_rate": 0.3,
+        "flag_rate": 0.2075,
+        "capacity_ok": true,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "8": {
+          "tn": 126,
+          "fp": 17,
+          "fn": 41,
+          "tp": 16,
+          "n": 200,
+          "precision": 0.48484848484848486,
+          "recall": 0.2807017543859649,
+          "accuracy": 0.71,
+          "cost": 222,
+          "defect_rate": 0.285,
+          "flag_rate": 0.165,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "9": {
+          "tn": 117,
+          "fp": 20,
+          "fn": 33,
+          "tp": 30,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.47619047619047616,
+          "accuracy": 0.735,
+          "cost": 185,
+          "defect_rate": 0.315,
+          "flag_rate": 0.25,
+          "capacity_ok": true,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    }
+  ],
+  "new_holdout": {
+    "baseline": {
+      "aggregate": {
+        "tn": 235,
+        "fp": 101,
+        "fn": 111,
+        "tp": 153,
+        "n": 600,
+        "precision": 0.6023622047244095,
+        "recall": 0.5795454545454546,
+        "accuracy": 0.6466666666666666,
+        "cost": 656,
+        "defect_rate": 0.44,
+        "flag_rate": 0.42333333333333334,
+        "capacity_ok": false,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "13": {
+          "tn": 78,
+          "fp": 38,
+          "fn": 34,
+          "tp": 50,
+          "n": 200,
+          "precision": 0.5681818181818182,
+          "recall": 0.5952380952380952,
+          "accuracy": 0.64,
+          "cost": 208,
+          "defect_rate": 0.42,
+          "flag_rate": 0.44,
+          "capacity_ok": false,
+          "recall_ok": false
+        },
+        "14": {
+          "tn": 82,
+          "fp": 32,
+          "fn": 38,
+          "tp": 48,
+          "n": 200,
+          "precision": 0.6,
+          "recall": 0.5581395348837209,
+          "accuracy": 0.65,
+          "cost": 222,
+          "defect_rate": 0.43,
+          "flag_rate": 0.4,
+          "capacity_ok": true,
+          "recall_ok": false
+        },
+        "15": {
+          "tn": 75,
+          "fp": 31,
+          "fn": 39,
+          "tp": 55,
+          "n": 200,
+          "precision": 0.6395348837209303,
+          "recall": 0.5851063829787234,
+          "accuracy": 0.65,
+          "cost": 226,
+          "defect_rate": 0.47,
+          "flag_rate": 0.43,
+          "capacity_ok": false,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    },
+    "original_cost_ml": {
+      "aggregate": {
+        "tn": 39,
+        "fp": 297,
+        "fn": 7,
+        "tp": 257,
+        "n": 600,
+        "precision": 0.463898916967509,
+        "recall": 0.9734848484848485,
+        "accuracy": 0.49333333333333335,
+        "cost": 332,
+        "defect_rate": 0.44,
+        "flag_rate": 0.9233333333333333,
+        "capacity_ok": false,
+        "recall_ok": true
+      },
+      "by_batch": {
+        "13": {
+          "tn": 14,
+          "fp": 102,
+          "fn": 1,
+          "tp": 83,
+          "n": 200,
+          "precision": 0.4486486486486487,
+          "recall": 0.9880952380952381,
+          "accuracy": 0.485,
+          "cost": 107,
+          "defect_rate": 0.42,
+          "flag_rate": 0.925,
+          "capacity_ok": false,
+          "recall_ok": true
+        },
+        "14": {
+          "tn": 16,
+          "fp": 98,
+          "fn": 2,
+          "tp": 84,
+          "n": 200,
+          "precision": 0.46153846153846156,
+          "recall": 0.9767441860465116,
+          "accuracy": 0.5,
+          "cost": 108,
+          "defect_rate": 0.43,
+          "flag_rate": 0.91,
+          "capacity_ok": false,
+          "recall_ok": true
+        },
+        "15": {
+          "tn": 9,
+          "fp": 97,
+          "fn": 4,
+          "tp": 90,
+          "n": 200,
+          "precision": 0.48128342245989303,
+          "recall": 0.9574468085106383,
+          "accuracy": 0.495,
+          "cost": 117,
+          "defect_rate": 0.47,
+          "flag_rate": 0.935,
+          "capacity_ok": false,
+          "recall_ok": true
+        }
+      },
+      "requirements_pass": false
+    },
+    "capacity_hybrid": {
+      "aggregate": {
+        "tn": 184,
+        "fp": 152,
+        "fn": 58,
+        "tp": 206,
+        "n": 600,
+        "precision": 0.5754189944134078,
+        "recall": 0.7803030303030303,
+        "accuracy": 0.65,
+        "cost": 442,
+        "defect_rate": 0.44,
+        "flag_rate": 0.5966666666666667,
+        "capacity_ok": false,
+        "recall_ok": false
+      },
+      "by_batch": {
+        "13": {
+          "tn": 66,
+          "fp": 50,
+          "fn": 18,
+          "tp": 66,
+          "n": 200,
+          "precision": 0.5689655172413793,
+          "recall": 0.7857142857142857,
+          "accuracy": 0.66,
+          "cost": 140,
+          "defect_rate": 0.42,
+          "flag_rate": 0.58,
+          "capacity_ok": false,
+          "recall_ok": false
+        },
+        "14": {
+          "tn": 64,
+          "fp": 50,
+          "fn": 21,
+          "tp": 65,
+          "n": 200,
+          "precision": 0.5652173913043478,
+          "recall": 0.7558139534883721,
+          "accuracy": 0.645,
+          "cost": 155,
+          "defect_rate": 0.43,
+          "flag_rate": 0.575,
+          "capacity_ok": false,
+          "recall_ok": false
+        },
+        "15": {
+          "tn": 54,
+          "fp": 52,
+          "fn": 19,
+          "tp": 75,
+          "n": 200,
+          "precision": 0.5905511811023622,
+          "recall": 0.7978723404255319,
+          "accuracy": 0.645,
+          "cost": 147,
+          "defect_rate": 0.47,
+          "flag_rate": 0.635,
+          "capacity_ok": false,
+          "recall_ok": false
+        }
+      },
+      "requirements_pass": false
+    }
+  },
+  "verdict": "NO-GO",
+  "error_pareto": [
+    {
+      "category": "false alarm",
+      "count": 152,
+      "percent": 0.7238095238095238,
+      "cumulative_percent": 0.7238095238095238
+    },
+    {
+      "category": "missed defect",
+      "count": 58,
+      "percent": 0.2761904761904762,
+      "cumulative_percent": 1.0
+    }
+  ],
+  "spec_test_mapping": {
+    "CS01": [
+      "DataTests.test_r01_seed_and_schema",
+      "DataTests.test_r02_reject_invalid_data",
+      "RefinementTests.test_cs01_extended_validation"
+    ],
+    "CS02": [
+      "AlgorithmTests.test_r04_rule_boundaries",
+      "RefinementTests.test_cs02_mandatory_flags"
+    ],
+    "CS03": [
+      "RefinementTests.test_cs03_capacity_selection"
+    ],
+    "CS04": [
+      "RefinementTests.test_cs04_gate"
+    ],
+    "CS05": [
+      "RefinementTests.test_cs05_reconcile"
+    ],
+    "CS06": [
+      "RefinementTests.test_cs06_split_and_frozen_model"
+    ],
+    "CS07": [
+      "PipelineTests.test_r08_outputs_reconcile_and_repeat",
+      "RefinementTests.test_cs07_repeat_and_traceability"
+    ]
+  },
+  "extended_data_sha256": "90f63e526e2f75a370fed750e95698bcc78a09b566c2388900b0532814c0ae04"
+}

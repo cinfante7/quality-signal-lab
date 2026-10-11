@@ -1,0 +1,3 @@
+category,count,percent,cumulative_percent
+false alarm,152,0.7238095238095238,0.7238095238095238
+missed defect,58,0.2761904761904762,1.0

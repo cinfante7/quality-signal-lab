@@ -1,0 +1,20 @@
+test_r04_rule_boundaries (test_quality_lab.AlgorithmTests.test_r04_rule_boundaries) ... ok
+test_r05_training_learns_and_ignores_identifiers (test_quality_lab.AlgorithmTests.test_r05_training_learns_and_ignores_identifiers) ... ok
+test_r06_threshold_minimizes_validation_cost (test_quality_lab.AlgorithmTests.test_r06_threshold_minimizes_validation_cost) ... ok
+test_r07_confusion_counts_and_zero_denominators (test_quality_lab.AlgorithmTests.test_r07_confusion_counts_and_zero_denominators) ... ok
+test_r01_seed_and_schema (test_quality_lab.DataTests.test_r01_seed_and_schema) ... ok
+test_r02_reject_invalid_data (test_quality_lab.DataTests.test_r02_reject_invalid_data) ... ok
+test_r03_batch_isolation (test_quality_lab.DataTests.test_r03_batch_isolation) ... ok
+test_r08_outputs_reconcile_and_repeat (test_quality_lab.PipelineTests.test_r08_outputs_reconcile_and_repeat) ... ok
+test_cs01_extended_validation (test_refinement.RefinementTests.test_cs01_extended_validation) ... ok
+test_cs02_mandatory_flags (test_refinement.RefinementTests.test_cs02_mandatory_flags) ... ok
+test_cs03_capacity_selection (test_refinement.RefinementTests.test_cs03_capacity_selection) ... ok
+test_cs04_gate (test_refinement.RefinementTests.test_cs04_gate) ... ok
+test_cs05_reconcile (test_refinement.RefinementTests.test_cs05_reconcile) ... ok
+test_cs06_split_and_frozen_model (test_refinement.RefinementTests.test_cs06_split_and_frozen_model) ... ok
+test_cs07_repeat_and_traceability (test_refinement.RefinementTests.test_cs07_repeat_and_traceability) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.630s
+
+OK

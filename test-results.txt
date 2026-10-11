@@ -1,0 +1,13 @@
+test_r04_rule_boundaries (test_quality_lab.AlgorithmTests.test_r04_rule_boundaries) ... ok
+test_r05_training_learns_and_ignores_identifiers (test_quality_lab.AlgorithmTests.test_r05_training_learns_and_ignores_identifiers) ... ok
+test_r06_threshold_minimizes_validation_cost (test_quality_lab.AlgorithmTests.test_r06_threshold_minimizes_validation_cost) ... ok
+test_r07_confusion_counts_and_zero_denominators (test_quality_lab.AlgorithmTests.test_r07_confusion_counts_and_zero_denominators) ... ok
+test_r01_seed_and_schema (test_quality_lab.DataTests.test_r01_seed_and_schema) ... ok
+test_r02_reject_invalid_data (test_quality_lab.DataTests.test_r02_reject_invalid_data) ... ok
+test_r03_batch_isolation (test_quality_lab.DataTests.test_r03_batch_isolation) ... ok
+test_r08_outputs_reconcile_and_repeat (test_quality_lab.PipelineTests.test_r08_outputs_reconcile_and_repeat) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.246s
+
+OK
